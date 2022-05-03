@@ -1,0 +1,16 @@
+{
+  "name": "pubsub-example-worker",
+  "version": "0.0.1",
+  "description": "An example on-publish handler for Cloudflare Pub/Sub",
+  "scripts": {
+    "tail": "npx wrangler@beta tail --format=pretty",
+    "publish": "npx wrangler@beta publish"
+  },
+  "author": "Matt Silverlock, Cloudflare",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "@cloudflare/workers-types": "^3.9.0",
+    "install-local": "^3.0.1",
+    "pubsub-utils": "file:../pubsub-utils"
+  }
+}
