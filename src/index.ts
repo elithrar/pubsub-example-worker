@@ -1,8 +1,6 @@
 // An example that shows how to consume and transform Pub/Sub messages from a Cloudflare Worker.
 
-/// <reference types="@cloudflare/workers-types" />
-
-import { isValidBrokerRequest, PubSubMessage } from "pubsub-utils"
+import { isValidBrokerRequest, PubSubMessage } from "@cloudflare/pubsub"
 
 async function pubsub(
   messages: Array<PubSubMessage>,
@@ -13,9 +11,10 @@ async function pubsub(
   // the incoming messages and process them as needed.
 
   // Messages we want to keep and forward to subscribers
-  let outgoingMessages: Array<PubSubMessage>
+  let outgoingMessages: Array<PubSubMessage> = []
   for (let msg of messages) {
     console.log(msg);
+
     // Replace the message contents in our topic - named "test/topic"
     // as a simple example
     if (msg.topic.startsWith("test/topic")) {
@@ -29,6 +28,9 @@ async function pubsub(
       // Don't add this to our outgoing messages array
       console.log(`dropping mid ${msg.mid}`)
     }
+
+    // Push other messages back to our outgoing array.
+    outgoingMessages.push(msg)
   }
 
   return outgoingMessages;
