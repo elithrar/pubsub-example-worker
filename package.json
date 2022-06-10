@@ -9,7 +9,7 @@
   "author": "Matt Silverlock, Cloudflare",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@cloudflare/pubsub": "file:../pubsub-utils",
+    "@cloudflare/pubsub": "^0.0.1",
     "@cloudflare/workers-types": "^3.11.0",
     "install-local": "^3.0.1"
   }
