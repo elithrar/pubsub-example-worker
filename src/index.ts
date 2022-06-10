@@ -27,10 +27,10 @@ async function pubsub(
     if (msg.topic.startsWith("debug/")) {
       // Don't add this to our outgoing messages array
       console.log(`dropping mid ${msg.mid}`)
+    } else {
+      // Push other messages back to our outgoing array.
+      outgoingMessages.push(msg)
     }
-
-    // Push other messages back to our outgoing array.
-    outgoingMessages.push(msg)
   }
 
   return outgoingMessages;
